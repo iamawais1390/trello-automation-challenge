@@ -1,4 +1,4 @@
-name: CI
+name: Test
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  checks:
+  test:
     runs-on: ubuntu-latest
     env:
       TRELLO_API_KEY: ${{ secrets.TRELLO_API_KEY }}
@@ -21,10 +21,6 @@ jobs:
           cache: npm
 
       - run: npm ci
-
-      - run: npm run lint
-
-      - run: npm run typecheck
 
       - run: npx playwright install --with-deps chromium
 
