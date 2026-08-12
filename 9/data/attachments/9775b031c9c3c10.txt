@@ -1,0 +1,12 @@
+[INFO] Asserting response is OK: card update responds successfully
+[INFO] Assertion passed: card update responds successfully
+[INFO] Asserting card-kielbasa-7IRp is equal to card-kielbasa-7IRp: update response reflects the new name
+[INFO] Assertion passed: update response reflects the new name
+[INFO] Asserting Updated description is equal to Updated description: update response reflects the new description
+[INFO] Assertion passed: update response reflects the new description
+[INFO] Asserting card-kielbasa-7IRp is equal to card-kielbasa-7IRp: updated name persists when re-fetched
+[INFO] Assertion passed: updated name persists when re-fetched
+[INFO] Asserting Updated description is equal to Updated description: updated description persists when re-fetched
+[INFO] Assertion passed: updated description persists when re-fetched
+[INFO] Asserting PUT /cards/{id} responded within 2000ms: took 326ms
+[INFO] Assertion passed: PUT /cards/{id} within SLA
