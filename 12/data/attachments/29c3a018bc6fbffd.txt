@@ -1,0 +1,10 @@
+[INFO] Asserting response is OK: board creation responds successfully
+[INFO] Assertion passed: board creation responds successfully
+[INFO] Asserting 6a7c98373fd7738d44415d18 is truthy: created board has an id
+[INFO] Assertion passed: created board has an id
+[INFO] Asserting automation-test-pants-HoBEXz is equal to automation-test-pants-HoBEXz: created board has the expected name
+[INFO] Assertion passed: created board has the expected name
+[INFO] Asserting false is equal to false: created board is not closed
+[INFO] Assertion passed: created board is not closed
+[INFO] Asserting POST /boards responded within 2000ms: took 480ms
+[INFO] Assertion passed: POST /boards within SLA

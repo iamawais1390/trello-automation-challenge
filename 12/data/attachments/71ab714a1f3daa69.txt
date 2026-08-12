@@ -1,0 +1,12 @@
+[INFO] Asserting response is OK: list creation responds successfully
+[INFO] Assertion passed: list creation responds successfully
+[INFO] Asserting 6a7c984bbb601561452bfc56 is truthy: created list has an id
+[INFO] Assertion passed: created list has an id
+[INFO] Asserting list-fellow-1ZD4 is equal to list-fellow-1ZD4: created list has the expected name
+[INFO] Assertion passed: created list has the expected name
+[INFO] Asserting 6a7c984af634a4479654fd03 is equal to 6a7c984af634a4479654fd03: created list belongs to the expected board
+[INFO] Assertion passed: created list belongs to the expected board
+[INFO] Asserting array contains 6a7c984bbb601561452bfc56: new list appears under its board
+[INFO] Assertion passed: new list appears under its board
+[INFO] Asserting POST /lists responded within 2000ms: took 288ms
+[INFO] Assertion passed: POST /lists within SLA
