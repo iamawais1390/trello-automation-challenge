@@ -1,10 +1,17 @@
 // @ts-check
-process.loadEnvFile(new URL('../.env', import.meta.url));
+import { existsSync } from 'node:fs';
+
+// Locally, credentials come from .env. In CI there's no .env file (it's
+// gitignored) — the runner sets TRELLO_API_KEY/TRELLO_TOKEN directly instead.
+const envPath = new URL('../.env', import.meta.url);
+if (existsSync(envPath)) {
+  process.loadEnvFile(envPath);
+}
 
 const { TRELLO_API_KEY, TRELLO_TOKEN } = process.env;
 
 if (!TRELLO_API_KEY || !TRELLO_TOKEN) {
-  throw new Error('Missing TRELLO_API_KEY or TRELLO_TOKEN in .env');
+  throw new Error('Missing TRELLO_API_KEY or TRELLO_TOKEN (set via .env locally, or as env vars in CI)');
 }
 
 const BASE_URL = 'https://api.trello.com/1';
