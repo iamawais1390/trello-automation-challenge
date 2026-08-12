@@ -3,11 +3,15 @@ import { faker } from '@faker-js/faker';
 import { test as base } from './login.js';
 
 /**
- * @type {import('@playwright/test').TestType<{
- *   boardName: string,
- *   randomListName: () => string,
- *   randomCardName: () => string,
- * }, {}>}
+ * @type {import('@playwright/test').TestType<
+ *   import('@playwright/test').PlaywrightTestArgs & import('@playwright/test').PlaywrightTestOptions & {
+ *     apiAuth: import('@playwright/test').APIRequestContext,
+ *     boardName: string,
+ *     randomListName: () => string,
+ *     randomCardName: () => string,
+ *   },
+ *   import('@playwright/test').PlaywrightWorkerArgs & import('@playwright/test').PlaywrightWorkerOptions
+ * >}
  */
 export const test = base.extend({
   boardName: async ({}, use) => {

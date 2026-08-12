@@ -1,3 +1,4 @@
+// @ts-check
 process.loadEnvFile(new URL('../.env', import.meta.url));
 
 const { TRELLO_API_KEY, TRELLO_TOKEN } = process.env;

@@ -1,3 +1,4 @@
+// @ts-check
 import { test } from '../fixtures/test-data.js';
 import { createBoard, deleteBoard } from '../src/boards.js';
 import { createList, getListsForBoard, getList, archiveList } from '../src/lists.js';

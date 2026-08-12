@@ -1,3 +1,4 @@
+// @ts-check
 import { test } from '../fixtures/test-data.js';
 import { createBoard, deleteBoard } from '../src/boards.js';
 import { createList } from '../src/lists.js';
@@ -79,10 +80,6 @@ test.describe('Card update', () => {
     secondListId = (await secondListResponse.json()).id;
   });
 
-  test.afterAll(async ({ apiAuth }) => {
-    await deleteBoard(apiAuth, boardId);
-  });
-
   test.beforeEach(async ({ apiAuth, randomCardName }) => {
     originalCardName = randomCardName();
     const response = await createCard(apiAuth, {
@@ -91,6 +88,10 @@ test.describe('Card update', () => {
       idList: listId,
     });
     cardId = (await response.json()).id;
+  });
+
+  test.afterAll(async ({ apiAuth }) => {
+    await deleteBoard(apiAuth, boardId);
   });
 
   test('renames a card and updates its description', async ({ apiAuth, randomCardName }, testInfo) => {
