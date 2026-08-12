@@ -1,3 +1,4 @@
+// @ts-check
 import { test } from '../fixtures/test-data.js';
 import { createBoard, getBoard, deleteBoard } from '../src/boards.js';
 import { createList } from '../src/lists.js';
@@ -48,6 +49,9 @@ test('full Trello workflow: create board, list, card, update it, then clean up',
     await Assert.assertHasStatus(await getBoard(apiAuth, board.id), 404, 'deleted board is no longer retrievable');
     await Assert.assertHasStatus(await getCard(apiAuth, card.id), 404, 'deleted card is no longer retrievable');
   } finally {
+    // Not a test assertion branch — a cleanup safety net so a failed
+    // assertion above still deletes the board instead of orphaning it.
+    // eslint-disable-next-line playwright/no-conditional-in-test
     if (boardId) {
       await deleteBoard(apiAuth, boardId);
     }

@@ -1,3 +1,4 @@
+// @ts-check
 import { test } from '../fixtures/login.js';
 import { Assert } from '../assertions/index.js';
 
