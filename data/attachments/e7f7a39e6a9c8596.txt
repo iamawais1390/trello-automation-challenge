@@ -1,0 +1,4 @@
+[INFO] Asserting response is OK: authenticated request to /members/me responds successfully
+[INFO] Assertion passed: authenticated request to /members/me responds successfully
+[INFO] Asserting aghaawais is truthy: authenticated member has a username
+[INFO] Assertion passed: authenticated member has a username

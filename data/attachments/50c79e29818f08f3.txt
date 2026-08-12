@@ -1,0 +1,6 @@
+[INFO] Asserting response is OK: list archiving responds successfully
+[INFO] Assertion passed: list archiving responds successfully
+[INFO] Asserting true is equal to true: archive response reports the list as closed
+[INFO] Assertion passed: archive response reports the list as closed
+[INFO] Asserting true is equal to true: archived list is closed when re-fetched
+[INFO] Assertion passed: archived list is closed when re-fetched
