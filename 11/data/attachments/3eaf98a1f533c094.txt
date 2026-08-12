@@ -1,0 +1,12 @@
+[INFO] Asserting response is OK: card creation responds successfully
+[INFO] Assertion passed: card creation responds successfully
+[INFO] Asserting 6a7c97bd49e33e4b01e560a2 is truthy: created card has an id
+[INFO] Assertion passed: created card has an id
+[INFO] Asserting card-premium-5GVU is equal to card-premium-5GVU: created card has the expected name
+[INFO] Assertion passed: created card has the expected name
+[INFO] Asserting 6a7c97bd8cab3737d9490c4b is equal to 6a7c97bd8cab3737d9490c4b: created card belongs to the expected list
+[INFO] Assertion passed: created card belongs to the expected list
+[INFO] Asserting array contains 6a7c97bd49e33e4b01e560a2: new card appears under its list
+[INFO] Assertion passed: new card appears under its list
+[INFO] Asserting POST /cards responded within 2000ms: took 356ms
+[INFO] Assertion passed: POST /cards within SLA
