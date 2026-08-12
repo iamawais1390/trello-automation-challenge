@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: write
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -14,6 +17,14 @@ jobs:
       TRELLO_TOKEN: ${{ secrets.TRELLO_TOKEN }}
     steps:
       - uses: actions/checkout@v4
+
+      - name: Checkout previous Allure report (for trend history)
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: actions/checkout@v4
+        continue-on-error: true
+        with:
+          ref: allure-reports-branch
+          path: previous-report
 
       - uses: actions/setup-node@v4
         with:
@@ -32,3 +43,32 @@ jobs:
           name: playwright-report
           path: playwright-report/
           retention-days: 7
+
+      # Everything below only runs on pushes to main - PRs get the
+      # Playwright HTML artifact above, not a published Allure report.
+      - uses: actions/setup-java@v4
+        if: always() && github.event_name == 'push' && github.ref == 'refs/heads/main'
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Carry forward Allure trend history
+        if: always() && github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          if [ -d previous-report/history ]; then
+            mkdir -p allure-results
+            cp -r previous-report/history allure-results/history
+          fi
+
+      - name: Generate Allure report
+        if: always() && github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: npx allure generate allure-results --clean -o allure-report
+
+      - name: Publish report to allure-reports-branch
+        if: always() && github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: allure-reports-branch
+          publish_dir: allure-report
+          force_orphan: true
