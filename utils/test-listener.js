@@ -1,5 +1,5 @@
 // @ts-check
-import Logger from '../src/logger.js';
+import Logger from './logger.js';
 
 const TEST_SEPARATOR =
   '-----------------------------------------------------------------------------';

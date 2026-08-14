@@ -1,6 +1,6 @@
 // @ts-check
 import { expect } from '@playwright/test';
-import Logger from '../src/logger.js';
+import Logger from '../utils/logger.js';
 import { AssertionError } from './assertionError.js';
 
 /**
