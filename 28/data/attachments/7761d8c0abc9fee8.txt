@@ -1,0 +1,12 @@
+[INFO] Asserting response is OK: list creation responds successfully
+[INFO] Assertion passed: list creation responds successfully
+[INFO] Asserting 6a7f03179c5843e63641cbcb is truthy: created list has an id
+[INFO] Assertion passed: created list has an id
+[INFO] Asserting list-conservative-mmWu is equal to list-conservative-mmWu: created list has the expected name
+[INFO] Assertion passed: created list has the expected name
+[INFO] Asserting 6a7f0317b1d08cc83b2c3cd4 is equal to 6a7f0317b1d08cc83b2c3cd4: created list belongs to the expected board
+[INFO] Assertion passed: created list belongs to the expected board
+[INFO] Asserting array contains 6a7f03179c5843e63641cbcb: new list appears under its board
+[INFO] Assertion passed: new list appears under its board
+[INFO] Asserting POST /lists responded within 1000ms: took 161ms
+[INFO] Assertion passed: POST /lists within SLA

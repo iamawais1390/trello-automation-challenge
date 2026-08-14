@@ -1,0 +1,2 @@
+[INFO] Asserting response status is 400: board creation without a name is rejected
+[INFO] Assertion passed: board creation without a name is rejected
