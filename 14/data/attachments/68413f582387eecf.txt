@@ -1,0 +1,2 @@
+[INFO] Asserting response status is 401: board creation with invalid auth is rejected
+[INFO] Assertion passed: board creation with invalid auth is rejected

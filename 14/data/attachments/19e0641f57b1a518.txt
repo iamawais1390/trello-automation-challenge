@@ -1,0 +1,2 @@
+[INFO] Asserting response status is 400: list creation without a name is rejected
+[INFO] Assertion passed: list creation without a name is rejected

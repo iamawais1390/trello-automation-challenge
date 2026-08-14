@@ -1,0 +1,4 @@
+[INFO] Asserting response is OK: card creation without a name responds successfully
+[INFO] Assertion passed: card creation without a name responds successfully
+[INFO] Asserting  is equal to : card created without a name defaults to an empty name
+[INFO] Assertion passed: card created without a name defaults to an empty name

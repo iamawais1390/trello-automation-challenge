@@ -1,0 +1,26 @@
+[INFO] Asserting 6a7ec504f9474606a4aa1e98 is truthy: created board has an id
+[INFO] Assertion passed: created board has an id
+[INFO] Asserting automation-test-fork-lGvHKi is equal to automation-test-fork-lGvHKi: created board has the expected name
+[INFO] Assertion passed: created board has the expected name
+[INFO] Asserting 6a7ec5041c580d9334aa510c is truthy: created list has an id
+[INFO] Assertion passed: created list has an id
+[INFO] Asserting 6a7ec504f9474606a4aa1e98 is equal to 6a7ec504f9474606a4aa1e98: created list belongs to the board
+[INFO] Assertion passed: created list belongs to the board
+[INFO] Asserting 6a7ec50446a655e912cc3e4f is truthy: created card has an id
+[INFO] Assertion passed: created card has an id
+[INFO] Asserting 6a7ec5041c580d9334aa510c is equal to 6a7ec5041c580d9334aa510c: created card belongs to the list
+[INFO] Assertion passed: created card belongs to the list
+[INFO] Asserting response is OK: card update responds successfully
+[INFO] Assertion passed: card update responds successfully
+[INFO] Asserting card-passport-soQK is equal to card-passport-soQK: card name was updated
+[INFO] Assertion passed: card name was updated
+[INFO] Asserting Ready for review is equal to Ready for review: card description was updated
+[INFO] Assertion passed: card description was updated
+[INFO] Asserting response is OK: card deletion responds successfully
+[INFO] Assertion passed: card deletion responds successfully
+[INFO] Asserting response is OK: board deletion responds successfully
+[INFO] Assertion passed: board deletion responds successfully
+[INFO] Asserting response status is 404: deleted board is no longer retrievable
+[INFO] Assertion passed: deleted board is no longer retrievable
+[INFO] Asserting response status is 404: deleted card is no longer retrievable
+[INFO] Assertion passed: deleted card is no longer retrievable

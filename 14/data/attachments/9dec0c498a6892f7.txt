@@ -1,0 +1,2 @@
+[INFO] Asserting response status is 400: list creation with an invalid board id is rejected
+[INFO] Assertion passed: list creation with an invalid board id is rejected
