@@ -1,0 +1,4 @@
+[INFO] Asserting response is OK: board deletion responds successfully
+[INFO] Assertion passed: board deletion responds successfully
+[INFO] Asserting response status is 404: deleted board is no longer retrievable
+[INFO] Assertion passed: deleted board is no longer retrievable
