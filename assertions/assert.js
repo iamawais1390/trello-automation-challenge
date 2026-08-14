@@ -150,7 +150,7 @@ export const Assert = {
    * @param {number} durationMs
    * @param {number} [thresholdMs]
    */
-  assertResponseTime: async (testInfo, label, durationMs, thresholdMs = 2000) => {
+  assertResponseTime: async (testInfo, label, durationMs, thresholdMs = 1500) => {
     Logger.info(`Asserting ${label} responded within ${thresholdMs}ms: took ${durationMs.toFixed(0)}ms`);
     testInfo.annotations.push({ type: 'response-time', description: `${label}: ${durationMs.toFixed(0)}ms` });
     try {
