@@ -39,13 +39,18 @@ npm run typecheck                        # tsc --noEmit, enforcing the // @ts-ch
 Each layer only talks to the one below it:
 
 - **`tests/*.spec.js`** — orchestration and assertions only. No direct HTTP calls, no raw `expect()`.
-- **`assertions/`** — a single `Assert` object (`assertions/assert.js`) wrapping Playwright's `expect()` for every check used in this suite (`assertIsOk`, `assertHasStatus`, `assertIsTruthy`, `assertAreEqual`, `assertAreNotEqual`, `assertContains`, `assertResponseTime`). Each method logs before/after via `src/logger.js` and, on failure, rethrows as `AssertionError` (`assertions/assertionError.js`) with the custom description on top and the original Playwright failure chained underneath via the native `Error` `cause` option.
+- **`assertions/`** — a single `Assert` object (`assertions/assert.js`) wrapping Playwright's `expect()` for every check used in this suite (`assertIsOk`, `assertHasStatus`, `assertIsTruthy`, `assertAreEqual`, `assertAreNotEqual`, `assertContains`, `assertResponseTime`). Each method logs before/after via `utils/logger.js` and, on failure, rethrows as `AssertionError` (`assertions/assertionError.js`) with the custom description on top and the original Playwright failure chained underneath via the native `Error` `cause` option.
 - **`fixtures/`** — a Playwright `test.extend()` chain: `fixtures/login.js` (`apiAuth` fixture — verifies Trello auth, then hands back the authenticated `request` fixture) → `fixtures/test-data.js` (adds `boardName`, and `randomListName`/`randomCardName` factories for generating distinct random names per call).
 - **`src/`** — thin per-resource API clients (`boards.js`, `lists.js`, `cards.js`), each wrapping `request.get/post/put/delete(...)` for one Trello resource, plus `auth-client.js` (auth header + login check) and `timing.js` (`withTiming()`, a response-time measurement wrapper).
+- **`utils/`** — shared infrastructure that isn't a Trello API client: `logger.js` (console-backed `info`/`warn`/`error`, used by both `assertions/` and the custom reporter below) and `test-listener.js`, a custom Playwright reporter.
 
 ### Auth
 
 Trello has no session/login endpoint — a key + token pair is sent as an `Authorization: OAuth ...` header on every request. `src/auth-client.js`'s `authHeader()` is the single source of truth for that header, used by `playwright.config.js` (applied globally via `use.extraHTTPHeaders`) and anywhere a *different* auth context is needed (e.g. the invalid-auth negative test in `boards.spec.js`).
+
+### Reporters
+
+`playwright.config.js` runs four reporters together: `line` (the terminal summary, e.g. `21 passed (12s)`), `html`, `allure-playwright`, and `utils/test-listener.js` — a custom reporter. Tests run in parallel across multiple workers, so without it, console output (e.g. `Assert`'s `[INFO]` logs) from different tests would interleave in the terminal. `test-listener.js` buffers each test's stdout/stderr and flushes it as one contiguous, separator-bounded block at `onTestEnd`, so output reads as one test's full story at a time regardless of parallelism.
 
 ### Test coverage
 
