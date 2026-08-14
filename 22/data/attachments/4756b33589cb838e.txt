@@ -1,0 +1,10 @@
+[INFO] Asserting response is OK: board creation responds successfully
+[INFO] Assertion passed: board creation responds successfully
+[INFO] Asserting 6a7ed2a354b58ce298d2fc7e is truthy: created board has an id
+[INFO] Assertion passed: created board has an id
+[INFO] Asserting automation-test-bend-T6L7Tt is equal to automation-test-bend-T6L7Tt: created board has the expected name
+[INFO] Assertion passed: created board has the expected name
+[INFO] Asserting false is equal to false: created board is not closed
+[INFO] Assertion passed: created board is not closed
+[INFO] Asserting POST /boards responded within 1500ms: took 538ms
+[INFO] Assertion passed: POST /boards within SLA

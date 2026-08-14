@@ -1,0 +1,12 @@
+[INFO] Asserting response is OK: card creation responds successfully
+[INFO] Assertion passed: card creation responds successfully
+[INFO] Asserting 6a7ed2a9d878474c0f96a90f is truthy: created card has an id
+[INFO] Assertion passed: created card has an id
+[INFO] Asserting card-custom-RsGK is equal to card-custom-RsGK: created card has the expected name
+[INFO] Assertion passed: created card has the expected name
+[INFO] Asserting 6a7ed2a9f97cfe8844627387 is equal to 6a7ed2a9f97cfe8844627387: created card belongs to the expected list
+[INFO] Assertion passed: created card belongs to the expected list
+[INFO] Asserting array contains 6a7ed2a9d878474c0f96a90f: new card appears under its list
+[INFO] Assertion passed: new card appears under its list
+[INFO] Asserting POST /cards responded within 1500ms: took 290ms
+[INFO] Assertion passed: POST /cards within SLA

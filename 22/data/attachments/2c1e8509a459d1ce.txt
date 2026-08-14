@@ -1,0 +1,2 @@
+[INFO] Asserting response status is 404: updating a non-existent card is rejected
+[INFO] Assertion passed: updating a non-existent card is rejected

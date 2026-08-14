@@ -1,0 +1,26 @@
+[INFO] Asserting 6a7ed2b7237514fb9bbdf364 is truthy: created board has an id
+[INFO] Assertion passed: created board has an id
+[INFO] Asserting automation-test-forage-voWOq2 is equal to automation-test-forage-voWOq2: created board has the expected name
+[INFO] Assertion passed: created board has the expected name
+[INFO] Asserting 6a7ed2b7774f056604fae98f is truthy: created list has an id
+[INFO] Assertion passed: created list has an id
+[INFO] Asserting 6a7ed2b7237514fb9bbdf364 is equal to 6a7ed2b7237514fb9bbdf364: created list belongs to the board
+[INFO] Assertion passed: created list belongs to the board
+[INFO] Asserting 6a7ed2b7a6c27b26b3203ab3 is truthy: created card has an id
+[INFO] Assertion passed: created card has an id
+[INFO] Asserting 6a7ed2b7774f056604fae98f is equal to 6a7ed2b7774f056604fae98f: created card belongs to the list
+[INFO] Assertion passed: created card belongs to the list
+[INFO] Asserting response is OK: card update responds successfully
+[INFO] Assertion passed: card update responds successfully
+[INFO] Asserting card-pinstripe-DIQg is equal to card-pinstripe-DIQg: card name was updated
+[INFO] Assertion passed: card name was updated
+[INFO] Asserting Ready for review is equal to Ready for review: card description was updated
+[INFO] Assertion passed: card description was updated
+[INFO] Asserting response is OK: card deletion responds successfully
+[INFO] Assertion passed: card deletion responds successfully
+[INFO] Asserting response is OK: board deletion responds successfully
+[INFO] Assertion passed: board deletion responds successfully
+[INFO] Asserting response status is 404: deleted board is no longer retrievable
+[INFO] Assertion passed: deleted board is no longer retrievable
+[INFO] Asserting response status is 404: deleted card is no longer retrievable
+[INFO] Assertion passed: deleted card is no longer retrievable
