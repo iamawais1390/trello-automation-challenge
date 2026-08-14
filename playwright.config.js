@@ -8,6 +8,12 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
+  // quiet: true stops the `line` reporter from also dumping raw stdout live
+  // (it implements onStdOut itself) - without it, test-listener.js's
+  // buffered per-test replay would duplicate everything `line` already
+  // printed. `line` still shows progress ticks and the final summary,
+  // neither of which are gated by `quiet`.
+  quiet: true,
   reporter: [['line'], ['html'], ['allure-playwright'], ['./utils/test-listener.js']],
   use: {
     baseURL: 'https://api.trello.com/1/',

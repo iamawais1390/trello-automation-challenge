@@ -7,20 +7,25 @@ const TEST_SEPARATOR =
 /** @typedef {import('@playwright/test/reporter').Reporter} Reporter */
 
 /**
- * Prints a colored START/PASSED/FAILED separator block around each test,
- * so test boundaries are visually clear even under parallel workers.
+ * Buffers each test's console output (keyed by test.id, since Playwright
+ * tags each onStdOut/onStdErr chunk with the test that produced it even
+ * under parallel workers) and flushes it as one contiguous block at
+ * onTestEnd, so logs from concurrently-running tests never interleave.
  *
- * Deliberately does not buffer/replay stdout: Playwright's onStdOut/onStdErr
- * hooks hand reporters a *copy* of process output for use in report
- * artifacts, they don't suppress the live terminal print - re-printing that
- * copy here would just duplicate output that already appeared once, live,
- * as the test ran.
+ * Requires `quiet: true` in playwright.config.js - without it, the `line`
+ * reporter's own onStdOut handler prints raw chunks live as they arrive
+ * (separately from this reporter's buffered replay), which would both
+ * reintroduce interleaving and duplicate every line.
  * @implements {Reporter}
  */
 export default class TestListener {
+  /** @type {Map<string, string[]>} */
+  #testLogs = new Map();
+
   /** @param {import('@playwright/test/reporter').TestCase} test */
   onTestBegin(test) {
-    this.#printBlock(this.#formatMessage(`TEST: ${test.title} - STARTED`));
+    this.#testLogs.set(test.id, []);
+    this.#logForTest(test.id, this.#formatMessage(`TEST: ${test.title} - STARTED`), true);
   }
 
   /**
@@ -32,13 +37,45 @@ export default class TestListener {
     const statusMessage = `TEST: ${test.title} - ${result.status.toUpperCase()}${retryMessage}`;
     const isFailure = result.status === 'failed' || result.status === 'timedOut';
 
-    this.#printBlock(isFailure ? this.#formatError(statusMessage) : this.#formatMessage(statusMessage));
+    this.#logForTest(
+      test.id,
+      isFailure ? this.#formatError(statusMessage) : this.#formatMessage(statusMessage),
+      true
+    );
 
     if (isFailure && result.error) {
-      console.log(this.#formatError(`Error: ${result.error.message}`));
+      this.#logForTest(test.id, this.#formatError(`Error: ${result.error.message}`));
       if (result.error.stack) {
-        console.log(this.#formatError(`Stack trace:\n${result.error.stack}`));
+        this.#logForTest(test.id, this.#formatError(`Stack trace:\n${result.error.stack}`));
       }
+    }
+
+    const logs = this.#testLogs.get(test.id) ?? [];
+    console.log(logs.join('\n'));
+    this.#testLogs.delete(test.id);
+  }
+
+  /**
+   * @param {string | Buffer} chunk
+   * @param {import('@playwright/test/reporter').TestCase} [test]
+   */
+  onStdOut(chunk, test) {
+    if (test) {
+      this.#logForTest(test.id, chunk.toString());
+    } else {
+      console.log(chunk.toString());
+    }
+  }
+
+  /**
+   * @param {string | Buffer} chunk
+   * @param {import('@playwright/test/reporter').TestCase} [test]
+   */
+  onStdErr(chunk, test) {
+    if (test) {
+      this.#logForTest(test.id, chunk.toString());
+    } else {
+      console.error(chunk.toString());
     }
   }
 
@@ -69,9 +106,25 @@ export default class TestListener {
     return `\x1b[31m${msg}\x1b[0m`;
   }
 
-  /** @param {string} message */
-  #printBlock(message) {
-    const separator = `\x1b[33m${TEST_SEPARATOR}\x1b[0m`;
-    console.log(`${separator}\n${message}\n${separator}`);
+  /** @param {string} separator */
+  #formatSeparator(separator) {
+    return `\x1b[33m${separator}\x1b[0m`;
+  }
+
+  /**
+   * @param {string} testId
+   * @param {string} message
+   * @param {boolean} [withSeparator]
+   */
+  #logForTest(testId, message, withSeparator = false) {
+    const logs = this.#testLogs.get(testId) ?? [];
+    if (withSeparator) {
+      logs.push(this.#formatSeparator(TEST_SEPARATOR));
+    }
+    logs.push(message);
+    if (withSeparator) {
+      logs.push(this.#formatSeparator(TEST_SEPARATOR));
+    }
+    this.#testLogs.set(testId, logs);
   }
 }
