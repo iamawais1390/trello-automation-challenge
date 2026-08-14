@@ -1,0 +1,4 @@
+[INFO] Asserting response is OK: card deletion responds successfully
+[INFO] Assertion passed: card deletion responds successfully
+[INFO] Asserting response status is 404: deleted card is no longer retrievable
+[INFO] Assertion passed: deleted card is no longer retrievable
