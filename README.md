@@ -70,7 +70,7 @@ The Allure report action keeps up to the last 20 CI runs, each individually brow
 
 ## Assumptions & decisions
 
-**Performance testing scope.** Clarified directly with the recruiter: implementation is expected to be Playwright/JavaScript only. Performance testing here means per-endpoint response-time SLA assertions (`Assert.assertResponseTime()`, 1500ms threshold, tuned against real observed latency of ~400–900ms) folded into the functional test for each write endpoint — not true load/throughput testing. An earlier draft fired concurrent requests at Trello's live production API to check latency under load; this was removed, since load-testing a third-party API we don't own and have no agreement to test isn't something to do casually, even at modest concurrency.
+**Performance testing scope.** Clarified directly with Waqas Bhai: implementation is expected to be Playwright/JavaScript only. Performance testing here means per-endpoint response-time SLA assertions (`Assert.assertResponseTime()`, 1500ms threshold, tuned against real observed latency of ~400–900ms) folded into the functional test for each write endpoint — not true load/throughput testing. An earlier draft fired concurrent requests at Trello's live production API to check latency under load; this was removed, since load-testing a third-party API we don't own and have no agreement to test isn't something to do casually, even at modest concurrency.
 
 **Repository visibility.** The repo is public rather than private. GitHub branch protection (required to enforce "no direct pushes to `main`") needs either a public repo or a paid GitHub Pro plan — verified via the API before making the call. Reasonable trade-off for a take-home challenge a reviewer needs access to anyway; no sensitive data lives in the repo (credentials are local-only, via a gitignored `.env` / GitHub Actions secrets).
 
@@ -80,5 +80,4 @@ The Allure report action keeps up to the last 20 CI runs, each individually brow
 
 ## Known gaps
 
-- The **Telenor E2E GUI Challenge** (also part of the original brief) is not implemented.
 - Allure history is retained for the last 20 CI runs; there's no index page listing them — older runs are reachable at `/<run-number>/` if you know the number, or by checking `allure-reports-branch`'s file tree.
