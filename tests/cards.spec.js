@@ -1,12 +1,10 @@
 // @ts-check
-import { test } from '../fixtures/test-data.js';
+import { test, NONEXISTENT_CARD_ID } from '../fixtures/test-data.js';
 import { createBoard, deleteBoard } from '../src/boards.js';
 import { createList } from '../src/lists.js';
 import { createCard, getCardsForList, getCard, updateCard, deleteCard } from '../src/cards.js';
 import { withTiming } from '../src/timing.js';
 import { Assert } from '../assertions/index.js';
-
-const NONEXISTENT_CARD_ID = '000000000000000000000000';
 
 test.describe('Card creation', () => {
   let boardId;

@@ -2,6 +2,10 @@
 import { faker } from '@faker-js/faker';
 import { test as base } from './login.js';
 
+// A well-formed but nonexistent Trello object id - Trello returns 404 for
+// these, vs. 400 for a syntactically invalid id (e.g. "not-a-real-id").
+export const NONEXISTENT_CARD_ID = '000000000000000000000000';
+
 /**
  * @type {import('@playwright/test').TestType<
  *   import('@playwright/test').PlaywrightTestArgs & import('@playwright/test').PlaywrightTestOptions & {
