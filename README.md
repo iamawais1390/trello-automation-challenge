@@ -50,7 +50,9 @@ Trello has no session/login endpoint — a key + token pair is sent as an `Autho
 
 ### Reporters
 
-`playwright.config.js` runs four reporters together: `line` (the terminal summary, e.g. `21 passed (12s)`), `html`, `allure-playwright`, and `utils/test-listener.js` — a custom reporter. Tests run in parallel across multiple workers, so without it, console output (e.g. `Assert`'s `[INFO]` logs) from different tests would interleave in the terminal. `test-listener.js` buffers each test's stdout/stderr and flushes it as one contiguous, separator-bounded block at `onTestEnd`, so output reads as one test's full story at a time regardless of parallelism.
+`playwright.config.js` runs four reporters together: `line` (progress ticks + the terminal summary, e.g. `21 passed (12s)`), `html`, `allure-playwright`, and `utils/test-listener.js` — a custom reporter. Tests run in parallel across multiple workers, so without grouping, console output (e.g. `Assert`'s `[INFO]` logs) from different tests would interleave in the terminal. `test-listener.js` buffers each test's stdout/stderr (keyed by `test.id`, which Playwright tags correctly even across workers) and flushes it as one contiguous, separator-bounded block at `onTestEnd`, so output reads as one test's full story at a time regardless of parallelism.
+
+This requires `quiet: true` in the config — without it, `line`'s own `onStdOut` handler prints raw chunks live as they arrive (a built-in behavior, not something we added), which would both duplicate every line and defeat the grouping. `quiet` only suppresses that raw dump; `line`'s progress ticks and final summary are unaffected.
 
 ### Test coverage
 
