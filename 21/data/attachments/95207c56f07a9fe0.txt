@@ -1,0 +1,4 @@
+[INFO] Asserting response is OK: card move responds successfully
+[INFO] Assertion passed: card move responds successfully
+[INFO] Asserting 6a7ed23452bc8333cb288d06 is equal to 6a7ed23452bc8333cb288d06: card now belongs to the target list
+[INFO] Assertion passed: card now belongs to the target list

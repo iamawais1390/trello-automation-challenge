@@ -1,0 +1,12 @@
+[INFO] Asserting response is OK: list creation responds successfully
+[INFO] Assertion passed: list creation responds successfully
+[INFO] Asserting 6a7ed23c46cf0719bf409791 is truthy: created list has an id
+[INFO] Assertion passed: created list has an id
+[INFO] Asserting list-junior-LQth is equal to list-junior-LQth: created list has the expected name
+[INFO] Assertion passed: created list has the expected name
+[INFO] Asserting 6a7ed23bc54c977b87c3f032 is equal to 6a7ed23bc54c977b87c3f032: created list belongs to the expected board
+[INFO] Assertion passed: created list belongs to the expected board
+[INFO] Asserting array contains 6a7ed23c46cf0719bf409791: new list appears under its board
+[INFO] Assertion passed: new list appears under its board
+[INFO] Asserting POST /lists responded within 1500ms: took 202ms
+[INFO] Assertion passed: POST /lists within SLA

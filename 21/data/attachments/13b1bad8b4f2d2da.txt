@@ -1,0 +1,12 @@
+[INFO] Asserting response is OK: card creation responds successfully
+[INFO] Assertion passed: card creation responds successfully
+[INFO] Asserting 6a7ed23157c0bcd3fe533924 is truthy: created card has an id
+[INFO] Assertion passed: created card has an id
+[INFO] Asserting card-cow-MLID is equal to card-cow-MLID: created card has the expected name
+[INFO] Assertion passed: created card has the expected name
+[INFO] Asserting 6a7ed23054b79e0f27aa8173 is equal to 6a7ed23054b79e0f27aa8173: created card belongs to the expected list
+[INFO] Assertion passed: created card belongs to the expected list
+[INFO] Asserting array contains 6a7ed23157c0bcd3fe533924: new card appears under its list
+[INFO] Assertion passed: new card appears under its list
+[INFO] Asserting POST /cards responded within 1500ms: took 381ms
+[INFO] Assertion passed: POST /cards within SLA
