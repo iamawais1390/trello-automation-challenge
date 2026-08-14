@@ -1,0 +1,2 @@
+[INFO] Asserting response status is 404: deleting an already-deleted board is rejected
+[INFO] Assertion passed: deleting an already-deleted board is rejected
