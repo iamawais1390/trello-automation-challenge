@@ -1,0 +1,6 @@
+[INFO] Asserting response is OK: partial card update responds successfully
+[INFO] Assertion passed: partial card update responds successfully
+[INFO] Asserting Only description changed is equal to Only description changed: targeted field was updated
+[INFO] Assertion passed: targeted field was updated
+[INFO] Asserting card-lashes-4bwX is equal to card-lashes-4bwX: untouched field was left unchanged
+[INFO] Assertion passed: untouched field was left unchanged

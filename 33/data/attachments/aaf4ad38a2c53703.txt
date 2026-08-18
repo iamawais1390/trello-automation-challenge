@@ -1,0 +1,2 @@
+[INFO] Asserting response status is 400: card creation without an idList is rejected
+[INFO] Assertion passed: card creation without an idList is rejected

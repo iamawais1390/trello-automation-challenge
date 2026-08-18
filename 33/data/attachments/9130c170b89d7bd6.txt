@@ -1,0 +1,26 @@
+[INFO] Asserting 6a8440c81800b375fff4e4f8 is truthy: created board has an id
+[INFO] Assertion passed: created board has an id
+[INFO] Asserting automation-test-entry-U7vKN6 is equal to automation-test-entry-U7vKN6: created board has the expected name
+[INFO] Assertion passed: created board has the expected name
+[INFO] Asserting 6a8440c9fb0ec8efcb19d93e is truthy: created list has an id
+[INFO] Assertion passed: created list has an id
+[INFO] Asserting 6a8440c81800b375fff4e4f8 is equal to 6a8440c81800b375fff4e4f8: created list belongs to the board
+[INFO] Assertion passed: created list belongs to the board
+[INFO] Asserting 6a8440c988aa8dd02c5d8181 is truthy: created card has an id
+[INFO] Assertion passed: created card has an id
+[INFO] Asserting 6a8440c9fb0ec8efcb19d93e is equal to 6a8440c9fb0ec8efcb19d93e: created card belongs to the list
+[INFO] Assertion passed: created card belongs to the list
+[INFO] Asserting response is OK: card update responds successfully
+[INFO] Assertion passed: card update responds successfully
+[INFO] Asserting card-marksman-ONba is equal to card-marksman-ONba: card name was updated
+[INFO] Assertion passed: card name was updated
+[INFO] Asserting Ready for review is equal to Ready for review: card description was updated
+[INFO] Assertion passed: card description was updated
+[INFO] Asserting response is OK: card deletion responds successfully
+[INFO] Assertion passed: card deletion responds successfully
+[INFO] Asserting response is OK: board deletion responds successfully
+[INFO] Assertion passed: board deletion responds successfully
+[INFO] Asserting response status is 404: deleted board is no longer retrievable
+[INFO] Assertion passed: deleted board is no longer retrievable
+[INFO] Asserting response status is 404: deleted card is no longer retrievable
+[INFO] Assertion passed: deleted card is no longer retrievable

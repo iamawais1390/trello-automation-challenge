@@ -1,0 +1,4 @@
+[INFO] Asserting response status is 404: deleting a board also removes its lists
+[INFO] Assertion passed: deleting a board also removes its lists
+[INFO] Asserting response status is 404: deleting a board also removes its cards
+[INFO] Assertion passed: deleting a board also removes its cards
