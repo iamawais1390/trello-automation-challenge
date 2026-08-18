@@ -14,18 +14,18 @@ if (!TRELLO_API_KEY || !TRELLO_TOKEN) {
   throw new Error('Missing TRELLO_API_KEY or TRELLO_TOKEN (set via .env locally, or as env vars in CI)');
 }
 
-const BASE_URL = 'https://api.trello.com/1';
-
 export function authHeader() {
   return `OAuth oauth_consumer_key="${TRELLO_API_KEY}", oauth_token="${TRELLO_TOKEN}"`;
 }
 
-export async function login() {
-  const url = `${BASE_URL}/members/me?key=${TRELLO_API_KEY}&token=${TRELLO_TOKEN}`;
-  const response = await fetch(url);
+/**
+ * @param {import('@playwright/test').APIRequestContext} request
+ */
+export async function login(request) {
+  const response = await request.get('members/me');
 
-  if (!response.ok) {
-    throw new Error(`Trello login failed: ${response.status} ${response.statusText}`);
+  if (!response.ok()) {
+    throw new Error(`Trello login failed: ${response.status()} ${response.statusText()}`);
   }
 
   return response.json();
