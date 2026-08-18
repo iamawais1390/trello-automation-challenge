@@ -7,7 +7,7 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 1 : undefined,
+  workers: process.env.CI ? 2 : undefined,
   // quiet: true stops the `line` reporter from also dumping raw stdout live
   // (it implements onStdOut itself) - without it, test-listener.js's
   // buffered per-test replay would duplicate everything `line` already
