@@ -7,7 +7,7 @@ import globals from 'globals';
 export default defineConfig([
   {
     files: ['**/*.js'],
-    ignores: ['node_modules', 'test-results', 'playwright-report'],
+    ignores: ['**/node_modules/**', '**/test-results/**', '**/playwright-report/**'],
     extends: [js.configs.recommended],
     languageOptions: {
       ecmaVersion: 2023,
