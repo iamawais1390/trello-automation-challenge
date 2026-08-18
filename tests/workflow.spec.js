@@ -5,15 +5,21 @@ import { createList } from '../src/lists.js';
 import { createCard, getCard, updateCard, deleteCard } from '../src/cards.js';
 import { Assert } from '../assertions/index.js';
 
-test('full Trello workflow: create board, list, card, update it, then clean up', async ({
-  apiAuth,
-  boardName,
-  randomListName,
-  randomCardName,
-}) => {
+test.describe('Full Trello workflow', () => {
   let boardId;
 
-  try {
+  test.afterAll(async ({ apiAuth }) => {
+    if (boardId) {
+      await deleteBoard(apiAuth, boardId);
+    }
+  });
+
+  test('full Trello workflow: create board, list, card, update it, then clean up', async ({
+    apiAuth,
+    boardName,
+    randomListName,
+    randomCardName,
+  }) => {
     const board = await (await createBoard(apiAuth, { name: boardName })).json();
     boardId = board.id;
     await Assert.assertIsTruthy(board.id, 'created board has an id');
@@ -48,12 +54,5 @@ test('full Trello workflow: create board, list, card, update it, then clean up',
 
     await Assert.assertHasStatus(await getBoard(apiAuth, board.id), 404, 'deleted board is no longer retrievable');
     await Assert.assertHasStatus(await getCard(apiAuth, card.id), 404, 'deleted card is no longer retrievable');
-  } finally {
-    // Not a test assertion branch — a cleanup safety net so a failed
-    // assertion above still deletes the board instead of orphaning it.
-    // eslint-disable-next-line playwright/no-conditional-in-test
-    if (boardId) {
-      await deleteBoard(apiAuth, boardId);
-    }
-  }
+  });
 });

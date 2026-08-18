@@ -12,7 +12,7 @@ import { login } from '../src/auth-client.js';
  */
 export const test = base.extend({
   apiAuth: async ({ request }, use) => {
-    await login();
+    await login(request);
     await use(request);
   },
 });
